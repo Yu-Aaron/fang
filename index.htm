@@ -13,57 +13,80 @@
 .source-url{font-size:15px;text-align:center}
 </style>
 <link rel="shortcut icon" href="images/fang.png">
+<link href="css/jquery.fullpage.css" type="text/css" rel="stylesheet">
 <link href="css/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/functions.js"></script>
+
 </head>
 
 <body>
-<div class="container">
-	<div id="mainDiv">
-		<div id="content">
-			<div id="loveHeart">
-				<div id="words">
-					<div id="messages">
-						<p>看住时间，别让她在流浪</p>
-						<p>亲爱的，看我们都认识这么久了</p>
-						<div id="elapseClock">
-							<span class="digit">306</span> days 
-							<span class="digit">02</span> hours 
-							<span class="digit">31</span> minutes 
-							<span class="digit">56</span> seconds
+<div id="fullpage" >
+	<div class="section">
+		<div class="container">
+			<div id="mainDiv">
+				<div id="content">
+					<div id="loveHeart">
+						<div id="words">
+							<div id="messages">
+								<p>看住时间，别让她在流浪</p>
+								<p>亲爱的，看我们都认识这么久了</p>
+								<div id="elapseClock">
+									<span class="digit">306</span> days
+									<span class="digit">02</span> hours
+									<span class="digit">31</span> minutes
+									<span class="digit">56</span> seconds
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div class="section">
+		<h3>第二屏</h3>
+	</div>
+	<div class="section">
+		<div class="slide">第三屏的第一屏</div>
+		<div class="slide">第三屏的第二屏</div>
+		<div class="slide">第三屏的第三屏</div>
+		<div class="slide">第三屏的第四屏</div>
+	</div>
+	<div class="section">
+		<h3>第四屏</h3>
+	</div>
 </div>
+<script type="text/javascript" src="js/jquery-1.12.1.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.fullpage.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript">
-var offsetX = $("#loveHeart").width() / 2;
-var offsetY = $("#loveHeart").height() / 2 - 55;
-var together = new Date();
-together.setFullYear(2015, 7, 14);
-together.setHours(21);
-together.setMinutes(41);
-together.setSeconds(42);
-together.setMilliseconds(0);
-
-if (!document.createElement('canvas').getContext) {
-	var msg = document.createElement("div");
-	msg.id = "errorMsg";
-	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-	document.body.appendChild(msg);
-	document.execCommand("stop");
-} else {
-
-
-	timeElapse(together);
-	setInterval(function () {
+	$(function(){
+		$('#fullpage').fullpage({
+			sectionsColor: ['#ffcc00', '#4BBFC3', '#7BAABE', '#ccddff'],
+			navigation:true,
+			loopBottom:true
+		});
+	});
+	var offsetX = $("#loveHeart").width() / 2;
+	var offsetY = $("#loveHeart").height() / 2 - 55;
+	var together = new Date();
+	together.setFullYear(2015, 7, 14);
+	together.setHours(21);
+	together.setMinutes(41);
+	together.setSeconds(42);
+	together.setMilliseconds(0);
+	if (!document.createElement('canvas').getContext) {
+		var msg = document.createElement("div");
+		msg.id = "errorMsg";
+		msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+		document.body.appendChild(msg);
+		document.execCommand("stop");
+	} else {
 		timeElapse(together);
-	}, 500);
-
-}
+		setInterval(function () {
+			timeElapse(together);
+		}, 500);
+	}
 </script>
 
 

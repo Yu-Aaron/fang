@@ -1,11 +1,10 @@
 ﻿
-var Garden
-$(function () {
+
+/*$(function () {
     // renderLoop
     setInterval(function () {
-        garden.render();
-    }, Garden.growSpeed);
-});
+    });
+});*/
 
 
 function startHeartAnimation() {
